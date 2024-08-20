@@ -49,10 +49,12 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
+    env: 
+      BUILD_VERSION :  build-ubuntu-latest-node-18
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: build-ubuntu-latest-node-18
+          name: env.BUILD_VERSION
       - name: Simulate deployment
-        run: echo "Déploiement simulé pour Ubuntu + Node 18"
+        run: echo "Déploiement simulé pour $BUILD_VERSION"
